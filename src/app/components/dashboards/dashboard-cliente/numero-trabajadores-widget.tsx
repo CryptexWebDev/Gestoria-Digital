@@ -76,12 +76,14 @@ export default function NumeroTrabajadoresWidget({ cardSx, contentSx }: NumeroTr
       sx={cardSx}
       contentSx={contentSx}
     >
-      <Box sx={{ flex: 1, minHeight: 280 }}>
-        <Chart options={options} series={series} type="bar" height={280} width="100%" />
+      <Box sx={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0 }}>
+        <Box sx={{ flex: 1, minHeight: 280 }}>
+          <Chart options={options} series={series} type="bar" height={280} width="100%" />
+        </Box>
+        <Button component={Link} href="/laboral/trabajadores" size="small" sx={{ mt: 1 }}>
+          Ver en Trabajadores
+        </Button>
       </Box>
-      <Button component={Link} href="/laboral/trabajadores" size="small" sx={{ mt: 1 }}>
-        Ver en Trabajadores
-      </Button>
     </DashboardCard>
   )
 }

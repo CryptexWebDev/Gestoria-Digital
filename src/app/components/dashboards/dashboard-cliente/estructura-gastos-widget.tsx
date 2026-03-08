@@ -101,24 +101,26 @@ export default function EstructuraGastosWidget({ cardSx, contentSx }: Estructura
         </Stack>
       }
     >
-      <Box
-        sx={{
-          flex: 1,
-          minHeight: 320,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          "& .apexcharts-legend": { overflow: "visible", maxHeight: "none" },
-          "& .apexcharts-legend-inner": { overflow: "visible", maxHeight: "none" },
-        }}
-      >
-        <Box sx={{ width: "100%", height: 320, maxWidth: 520 }}>
-          <Chart options={options} series={series} type="pie" height={320} width="100%" />
+      <Box sx={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0 }}>
+        <Box
+          sx={{
+            flex: 1,
+            minHeight: 320,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            "& .apexcharts-legend": { overflow: "visible", maxHeight: "none" },
+            "& .apexcharts-legend-inner": { overflow: "visible", maxHeight: "none" },
+          }}
+        >
+          <Box sx={{ width: "100%", height: 320, maxWidth: 520 }}>
+            <Chart options={options} series={series} type="pie" height={320} width="100%" />
+          </Box>
         </Box>
+        <Button component={Link} href="/contabilidad" size="small" sx={{ mt: 1 }}>
+          Detalles en Contabilidad
+        </Button>
       </Box>
-      <Button component={Link} href="/contabilidad" size="small" sx={{ mt: 1 }}>
-        Detalles en Contabilidad
-      </Button>
     </DashboardCard>
   )
 }

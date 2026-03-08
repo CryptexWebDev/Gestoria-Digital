@@ -90,12 +90,14 @@ export default function CosteLaboralWidget({ cardSx, contentSx }: CosteLaboralWi
         </Stack>
       }
     >
-      <Box sx={{ flex: 1, minHeight: 280 }}>
-        <Chart options={options} series={series} type="line" height={280} width="100%" />
+      <Box sx={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0 }}>
+        <Box sx={{ flex: 1, minHeight: 280 }}>
+          <Chart options={options} series={series} type="line" height={280} width="100%" />
+        </Box>
+        <Button component={Link} href="/laboral/documentos-laborales" size="small" sx={{ mt: 1 }}>
+          Ver en Laboral
+        </Button>
       </Box>
-      <Button component={Link} href="/laboral/documentos-laborales" size="small" sx={{ mt: 1 }}>
-        Ver en Laboral
-      </Button>
     </DashboardCard>
   )
 }
