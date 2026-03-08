@@ -135,7 +135,13 @@ export default function FacturacionPage() {
               sx={{ minWidth: 260 }}
             />
             <FormControl size="small" sx={{ minWidth: 140 }}>
-              <Select value={estadoFilter} onChange={(e) => { setEstadoFilter(e.target.value); setPage(0) }} sx={{ minHeight: 40 }}>
+              <Select
+                value={estadoFilter}
+                onChange={(e) => { setEstadoFilter(e.target.value); setPage(0) }}
+                displayEmpty
+                renderValue={(v) => (v === "" ? t("common.todos") : v === "Pendiente" ? t("facturacion.pendiente") : t("facturacion.contabilizado"))}
+                sx={{ minHeight: 40 }}
+              >
                 <MenuItem value="">{t("common.todos")}</MenuItem>
                 <MenuItem value="Pendiente">{t("facturacion.pendiente")}</MenuItem>
                 <MenuItem value="Contabilizado">{t("facturacion.contabilizado")}</MenuItem>

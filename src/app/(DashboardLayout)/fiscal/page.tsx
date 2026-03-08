@@ -147,14 +147,26 @@ export default function FiscalPage() {
         <Box>
         <Stack direction="row" flexWrap="wrap" gap={2} mb={3}>
           <FormControl size="small" sx={{ minWidth: 100 }}>
-            <Select value={ano} onChange={(e) => { setAno(e.target.value); setPage(0) }} sx={{ minHeight: 40 }}>
+            <Select
+              value={ano}
+              onChange={(e) => { setAno(e.target.value); setPage(0) }}
+              displayEmpty
+              renderValue={(v) => (v === "" ? t("common.todos") : v)}
+              sx={{ minHeight: 40 }}
+            >
               <MenuItem value="">{t("common.todos")}</MenuItem>
               <MenuItem value={String(currentYear)}>{currentYear}</MenuItem>
               <MenuItem value={String(currentYear - 1)}>{currentYear - 1}</MenuItem>
             </Select>
           </FormControl>
           <FormControl size="small" sx={{ minWidth: 120 }}>
-            <Select value={modelo} onChange={(e) => { setModelo(e.target.value); setPage(0) }} sx={{ minHeight: 40 }}>
+            <Select
+              value={modelo}
+              onChange={(e) => { setModelo(e.target.value); setPage(0) }}
+              displayEmpty
+              renderValue={(v) => (v === "" ? t("common.todos") : v)}
+              sx={{ minHeight: 40 }}
+            >
               <MenuItem value="">{t("common.todos")}</MenuItem>
               <MenuItem value="303">303</MenuItem>
               <MenuItem value="111">111</MenuItem>
@@ -165,7 +177,13 @@ export default function FiscalPage() {
             </Select>
           </FormControl>
           <FormControl size="small" sx={{ minWidth: 100 }}>
-            <Select value={periodo} onChange={(e) => { setPeriodo(e.target.value); setPage(0) }} sx={{ minHeight: 40 }}>
+            <Select
+              value={periodo}
+              onChange={(e) => { setPeriodo(e.target.value); setPage(0) }}
+              displayEmpty
+              renderValue={(v) => (v === "" ? t("common.todos") : v)}
+              sx={{ minHeight: 40 }}
+            >
               <MenuItem value="">{t("common.todos")}</MenuItem>
               <MenuItem value="1T">1T</MenuItem>
               <MenuItem value="2T">2T</MenuItem>

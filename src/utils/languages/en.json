@@ -26,7 +26,7 @@
     "importe": "Amount",
     "filasPorPagina": "Rows per page",
     "paginatedCount": "{{from}}-{{to}} of {{count}}",
-    "demo": "(demo)",
+    "demo": "",
     "elegir": "Choose"
   },
   "inicio": {
@@ -35,7 +35,7 @@
     "ultimasDeclaraciones": "Latest tax declarations",
     "accesoRapidoFiscal": "Quick access to Tax",
     "verTodas": "View all",
-    "descargaIniciada": "{{doc}} {{modelo}}: download started (demo)."
+    "descargaIniciada": "{{doc}} {{modelo}}: download started."
   },
   "datos": {
     "pageTitle": "Data",
@@ -58,22 +58,22 @@
     "añadirTelefono": "Add phone",
     "añadirEmail": "Add email",
     "eliminar": "Remove",
-    "guardadoOk": "Data saved successfully (demo).",
-    "canceladoOk": "Changes cancelled (demo).",
-    "telefonoAñadido": "Phone added (demo).",
-    "emailAñadido": "Email added (demo).",
-    "telefonoEliminado": "Phone removed (demo).",
-    "emailEliminado": "Email removed (demo)."
+    "guardadoOk": "Data saved successfully.",
+    "canceladoOk": "Changes cancelled.",
+    "telefonoAñadido": "Phone added.",
+    "emailAñadido": "Email added.",
+    "telefonoEliminado": "Phone removed.",
+    "emailEliminado": "Email removed."
   },
   "fiscal": {
     "pageTitle": "Tax",
     "pageDescription": "Tax declarations",
     "declaraciones": "Declarations",
-    "filtrosDescarga": "Filters and download (demo)",
+    "filtrosDescarga": "Filters and download",
     "descargarSeleccionados": "Download selected",
     "enviarPorEmail": "Send selected by email",
-    "descargaIniciadaN": "Download started ({{n}} declaration(s)). Demo.",
-    "emailEnviadoOk": "Email sent successfully (demo).",
+    "descargaIniciadaN": "Download started ({{n}} declaration(s)).",
+    "emailEnviadoOk": "Email sent successfully.",
     "ningunaSeleccionada": "None selected",
     "asuntoDefault": "Tax declarations {{ano}}"
   },
@@ -90,19 +90,19 @@
     "datosTrabajador": "Worker data",
     "direccion": "Address",
     "documentosTrabajador": "Worker documents",
-    "filtrosDocumentoAnoMes": "Filters: Document, Year, Month (demo)",
+    "filtrosDocumentoAnoMes": "Filters: Document, Year, Month",
     "documento": "Document",
     "sel": "Sel.",
-    "descargaIniciadaN": "Download started ({{n}} document(s)). Demo.",
-    "descargaIniciadaDoc": "{{tipo}} {{mes}} {{ano}}: download started (demo).",
-    "emailEnviadoOk": "Email sent successfully (demo).",
+    "descargaIniciadaN": "Download started ({{n}} document(s)).",
+    "descargaIniciadaDoc": "{{tipo}} {{mes}} {{ano}}: download started.",
+    "emailEnviadoOk": "Email sent successfully.",
     "ningunDocumento": "No documents",
     "asuntoDocumentos": "Documents {{nombre}}"
   },
   "facturacion": {
     "pageTitle": "Billing",
-    "pageDescription": "Billing module (demo)",
-    "dragText": "Drag invoices here (PNG, JPG, PDF) to upload. Demo.",
+    "pageDescription": "Billing module",
+    "dragText": "Drag invoices here (PNG, JPG, PDF) to upload.",
     "zonaDrop": "Drag-and-drop zone",
     "nuevoProveedor": "+ New supplier",
     "nuevoCliente": "+ New client",
@@ -114,13 +114,13 @@
     "fecha": "Date",
     "numeroFactura": "Invoice no.",
     "proveedorCliente": "Supplier/Client",
-    "proveedorCreadoOk": "Supplier created successfully (demo).",
-    "clienteCreadoOk": "Client created successfully (demo)."
+    "proveedorCreadoOk": "Supplier created successfully.",
+    "clienteCreadoOk": "Client created successfully."
   },
   "contabilidad": {
     "pageTitle": "Accounting",
-    "pageDescription": "Accounting module (demo)",
-    "nuevaOperacion": "New operation (demo)",
+    "pageDescription": "Accounting module",
+    "nuevaOperacion": "New operation",
     "fecha": "Date",
     "tipoOperacion": "Operation type",
     "elegir": "Choose",
@@ -135,14 +135,14 @@
     "conIva": "Incl. VAT",
     "crearAsiento": "Create entry",
     "libroContable": "Ledger",
-    "filtrosPeriodo": "Filters by period, accounts (demo)",
+    "filtrosPeriodo": "Filters by period, accounts",
     "desde": "From",
     "hasta": "To",
     "tipo": "Type",
     "numeroAsiento": "Entry no.",
     "numeroFactura": "Invoice no.",
-    "asientoCreadoOk": "Entry created successfully (demo).",
-    "proveedorCreadoOk": "Supplier/Client created (demo). Added to list."
+    "asientoCreadoOk": "Entry created successfully.",
+    "proveedorCreadoOk": "Supplier/Client created. Added to list."
   },
   "modals": {
     "enviarPorEmail": "Send by email",
@@ -169,7 +169,7 @@
     "pageDescription": "Labour documents and payslips",
     "title": "Labour documents",
     "cardTitle": "Documents",
-    "cardSubtitle": "Filters and actions (demo)",
+    "cardSubtitle": "Filters and actions",
     "download": "Download",
     "sendEmail": "Send by email",
     "tipoDocumento": "Document type",
@@ -185,9 +185,9 @@
     "trabajador": "Worker",
     "importe": "Amount",
     "rowsPerPage": "Rows per page",
-    "descargaIniciada": "Download started ({{n}} document(s)). Demo.",
-    "emailEnviadoOk": "Email sent successfully (demo).",
-    "descargaFila": "{{tipo}} - {{trabajador}}: download started (demo)."
+    "descargaIniciada": "Download started ({{n}} document(s)).",
+    "emailEnviadoOk": "Email sent successfully.",
+    "descargaFila": "{{tipo}} - {{trabajador}}: download started."
   },
   "widgets": {
     "ingresosVsGastos": "Income vs Expenses",

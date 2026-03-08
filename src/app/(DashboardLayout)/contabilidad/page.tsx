@@ -126,16 +126,22 @@ export default function ContabilidadPage() {
                 <CustomFormLabel>{t("contabilidad.fecha")}</CustomFormLabel>
                 <CustomTextField type="date" fullWidth size="small" />
                 <FormControl size="small" fullWidth>
-                  <Select value={tipoOperacion} onChange={(e) => setTipoOperacion(e.target.value)} sx={{ minHeight: 40 }}>
+                  <Select
+                    value={tipoOperacion}
+                    onChange={(e) => setTipoOperacion(e.target.value)}
+                    displayEmpty
+                    renderValue={(v) => (v === "" ? t("contabilidad.elegir") : v === "gasto" ? t("contabilidad.gasto") : t("contabilidad.ingreso"))}
+                    sx={{ minHeight: 40 }}
+                  >
                     <MenuItem value="">{t("contabilidad.elegir")}</MenuItem>
                     <MenuItem value="gasto">{t("contabilidad.gasto")}</MenuItem>
                     <MenuItem value="ingreso">{t("contabilidad.ingreso")}</MenuItem>
                   </Select>
                 </FormControl>
                 <CustomFormLabel>{t("contabilidad.proveedorCliente")}</CustomFormLabel>
-                <Stack direction="row" spacing={1} alignItems="center">
-                  <CustomTextField fullWidth size="small" placeholder={t("contabilidad.seleccionarCrear")} />
-                  <Button variant="outlined" size="small" onClick={() => setProveedorModalOpen(true)}>
+                <Stack direction="row" spacing={1} alignItems="center" flexWrap="nowrap">
+                  <CustomTextField size="small" placeholder={t("contabilidad.seleccionarCrear")} sx={{ flex: 1, minWidth: 0 }} />
+                  <Button variant="outlined" size="small" onClick={() => setProveedorModalOpen(true)} sx={{ flexShrink: 0 }}>
                     {t("contabilidad.crear")}
                   </Button>
                 </Stack>
@@ -173,7 +179,13 @@ export default function ContabilidadPage() {
                   </Select>
                 </FormControl>
                 <FormControl size="small" sx={{ minWidth: 120 }}>
-                  <Select value={tipoFilter} onChange={(e) => { setTipoFilter(e.target.value); setPage(0) }} sx={{ minHeight: 40 }}>
+                  <Select
+                    value={tipoFilter}
+                    onChange={(e) => { setTipoFilter(e.target.value); setPage(0) }}
+                    displayEmpty
+                    renderValue={(v) => (v === "" ? t("common.todos") : v === "Gasto" ? t("contabilidad.gasto") : t("contabilidad.ingreso"))}
+                    sx={{ minHeight: 40 }}
+                  >
                     <MenuItem value="">{t("common.todos")}</MenuItem>
                     <MenuItem value="Gasto">{t("contabilidad.gasto")}</MenuItem>
                     <MenuItem value="Ingreso">{t("contabilidad.ingreso")}</MenuItem>

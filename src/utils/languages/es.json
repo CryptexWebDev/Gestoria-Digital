@@ -26,7 +26,7 @@
     "importe": "Importe",
     "filasPorPagina": "Filas por página",
     "paginatedCount": "{{from}}-{{to}} de {{count}}",
-    "demo": "(demo)",
+    "demo": "",
     "elegir": "Elegir"
   },
   "inicio": {
@@ -35,7 +35,7 @@
     "ultimasDeclaraciones": "Últimas declaraciones de impuestos",
     "accesoRapidoFiscal": "Acceso rápido a Fiscal",
     "verTodas": "Ver todas",
-    "descargaIniciada": "{{doc}} {{modelo}}: descarga iniciada (demo)."
+    "descargaIniciada": "{{doc}} {{modelo}}: descarga iniciada."
   },
   "datos": {
     "pageTitle": "Datos",
@@ -58,22 +58,22 @@
     "añadirTelefono": "Añadir teléfono",
     "añadirEmail": "Añadir email",
     "eliminar": "Eliminar",
-    "guardadoOk": "Datos guardados correctamente (demo).",
-    "canceladoOk": "Cambios cancelados (demo).",
-    "telefonoAñadido": "Teléfono añadido (demo).",
-    "emailAñadido": "Email añadido (demo).",
-    "telefonoEliminado": "Teléfono eliminado (demo).",
-    "emailEliminado": "Email eliminado (demo)."
+    "guardadoOk": "Datos guardados correctamente.",
+    "canceladoOk": "Cambios cancelados.",
+    "telefonoAñadido": "Teléfono añadido.",
+    "emailAñadido": "Email añadido.",
+    "telefonoEliminado": "Teléfono eliminado.",
+    "emailEliminado": "Email eliminado."
   },
   "fiscal": {
     "pageTitle": "Fiscal",
     "pageDescription": "Declaraciones fiscales",
     "declaraciones": "Declaraciones",
-    "filtrosDescarga": "Filtros y descarga (demo)",
+    "filtrosDescarga": "Filtros y descarga",
     "descargarSeleccionados": "Descargar seleccionados",
     "enviarPorEmail": "Enviar seleccionados por email",
-    "descargaIniciadaN": "Descarga iniciada ({{n}} declaración/es). Demo.",
-    "emailEnviadoOk": "Email enviado correctamente (demo).",
+    "descargaIniciadaN": "Descarga iniciada ({{n}} declaración/es).",
+    "emailEnviadoOk": "Email enviado correctamente.",
     "ningunaSeleccionada": "Ninguna seleccionada",
     "asuntoDefault": "Declaraciones fiscales {{ano}}"
   },
@@ -90,19 +90,19 @@
     "datosTrabajador": "Datos del trabajador",
     "direccion": "Dirección",
     "documentosTrabajador": "Documentos del trabajador",
-    "filtrosDocumentoAnoMes": "Filtros: Documento, Año, Mes (demo)",
+    "filtrosDocumentoAnoMes": "Filtros: Documento, Año, Mes",
     "documento": "Documento",
     "sel": "Sel.",
-    "descargaIniciadaN": "Descarga iniciada ({{n}} documento(s)). Demo.",
-    "descargaIniciadaDoc": "{{tipo}} {{mes}} {{ano}}: descarga iniciada (demo).",
-    "emailEnviadoOk": "Email enviado correctamente (demo).",
+    "descargaIniciadaN": "Descarga iniciada ({{n}} documento(s)).",
+    "descargaIniciadaDoc": "{{tipo}} {{mes}} {{ano}}: descarga iniciada.",
+    "emailEnviadoOk": "Email enviado correctamente.",
     "ningunDocumento": "Ningún documento",
     "asuntoDocumentos": "Documentos {{nombre}}"
   },
   "facturacion": {
     "pageTitle": "Facturación",
-    "pageDescription": "Módulo de facturación (demo)",
-    "dragText": "Arrastra aquí facturas (PNG, JPG, PDF) para subir. Demo.",
+    "pageDescription": "Módulo de facturación",
+    "dragText": "Arrastra aquí facturas (PNG, JPG, PDF) para subir.",
     "zonaDrop": "Zona de drag-and-drop",
     "nuevoProveedor": "+ Nuevo proveedor",
     "nuevoCliente": "+ Nuevo cliente",
@@ -114,13 +114,13 @@
     "fecha": "Fecha",
     "numeroFactura": "Nº factura",
     "proveedorCliente": "Proveedor/Cliente",
-    "proveedorCreadoOk": "Proveedor creado correctamente (demo).",
-    "clienteCreadoOk": "Cliente creado correctamente (demo)."
+    "proveedorCreadoOk": "Proveedor creado correctamente.",
+    "clienteCreadoOk": "Cliente creado correctamente."
   },
   "contabilidad": {
     "pageTitle": "Contabilidad",
-    "pageDescription": "Módulo contable (demo)",
-    "nuevaOperacion": "Nueva operación (demo)",
+    "pageDescription": "Módulo contable",
+    "nuevaOperacion": "Nueva operación",
     "fecha": "Fecha",
     "tipoOperacion": "Tipo operación",
     "elegir": "Elegir",
@@ -135,14 +135,14 @@
     "conIva": "Con IVA",
     "crearAsiento": "Crear asiento",
     "libroContable": "Libro contable",
-    "filtrosPeriodo": "Filtros por periodo, cuentas (demo)",
+    "filtrosPeriodo": "Filtros por periodo, cuentas",
     "desde": "Desde",
     "hasta": "Hasta",
     "tipo": "Tipo",
     "numeroAsiento": "Nº asiento",
     "numeroFactura": "Nº factura",
-    "asientoCreadoOk": "Asiento creado correctamente (demo).",
-    "proveedorCreadoOk": "Proveedor/Cliente creado (demo). Añadido al listado."
+    "asientoCreadoOk": "Asiento creado correctamente.",
+    "proveedorCreadoOk": "Proveedor/Cliente creado. Añadido al listado."
   },
   "modals": {
     "enviarPorEmail": "Enviar por email",
@@ -169,7 +169,7 @@
     "pageDescription": "Documentos y nóminas laborales",
     "title": "Documentos laborales",
     "cardTitle": "Documentos",
-    "cardSubtitle": "Filtros y acciones (demo)",
+    "cardSubtitle": "Filtros y acciones",
     "download": "Descargar",
     "sendEmail": "Enviar por email",
     "tipoDocumento": "Tipo documento",
@@ -185,9 +185,9 @@
     "trabajador": "Trabajador",
     "importe": "Importe",
     "rowsPerPage": "Filas por página",
-    "descargaIniciada": "Descarga iniciada ({{n}} documento(s)). Demo.",
-    "emailEnviadoOk": "Email enviado correctamente (demo).",
-    "descargaFila": "{{tipo}} - {{trabajador}}: descarga iniciada (demo)."
+    "descargaIniciada": "Descarga iniciada ({{n}} documento(s)).",
+    "emailEnviadoOk": "Email enviado correctamente.",
+    "descargaFila": "{{tipo}} - {{trabajador}}: descarga iniciada."
   },
   "widgets": {
     "ingresosVsGastos": "Ingresos vs Gastos",

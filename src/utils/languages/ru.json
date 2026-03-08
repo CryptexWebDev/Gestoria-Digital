@@ -26,7 +26,7 @@
     "importe": "Сумма",
     "filasPorPagina": "Строк на странице",
     "paginatedCount": "{{from}}–{{to}} из {{count}}",
-    "demo": "(демо)",
+    "demo": "",
     "elegir": "Выбрать"
   },
   "inicio": {
@@ -35,7 +35,7 @@
     "ultimasDeclaraciones": "Последние налоговые декларации",
     "accesoRapidoFiscal": "Быстрый переход в Налоги",
     "verTodas": "Все",
-    "descargaIniciada": "{{doc}} {{modelo}}: загрузка начата (демо)."
+    "descargaIniciada": "{{doc}} {{modelo}}: загрузка начата."
   },
   "datos": {
     "pageTitle": "Данные",
@@ -58,22 +58,22 @@
     "añadirTelefono": "Добавить телефон",
     "añadirEmail": "Добавить email",
     "eliminar": "Удалить",
-    "guardadoOk": "Данные сохранены (демо).",
-    "canceladoOk": "Изменения отменены (демо).",
-    "telefonoAñadido": "Телефон добавлен (демо).",
-    "emailAñadido": "Email добавлен (демо).",
-    "telefonoEliminado": "Телефон удалён (демо).",
-    "emailEliminado": "Email удалён (демо)."
+    "guardadoOk": "Данные сохранены.",
+    "canceladoOk": "Изменения отменены.",
+    "telefonoAñadido": "Телефон добавлен.",
+    "emailAñadido": "Email добавлен.",
+    "telefonoEliminado": "Телефон удалён.",
+    "emailEliminado": "Email удалён."
   },
   "fiscal": {
     "pageTitle": "Налоги",
     "pageDescription": "Налоговые декларации",
     "declaraciones": "Декларации",
-    "filtrosDescarga": "Фильтры и загрузка (демо)",
+    "filtrosDescarga": "Фильтры и загрузка",
     "descargarSeleccionados": "Скачать выбранные",
     "enviarPorEmail": "Отправить выбранные по email",
     "descargaIniciadaN": "Загрузка начата ({{n}} деклараций). Демо.",
-    "emailEnviadoOk": "Письмо отправлено (демо).",
+    "emailEnviadoOk": "Письмо отправлено.",
     "ningunaSeleccionada": "Ничего не выбрано",
     "asuntoDefault": "Налоговые декларации {{ano}}"
   },
@@ -90,19 +90,19 @@
     "datosTrabajador": "Данные сотрудника",
     "direccion": "Адрес",
     "documentosTrabajador": "Документы сотрудника",
-    "filtrosDocumentoAnoMes": "Фильтры: Документ, Год, Месяц (демо)",
+    "filtrosDocumentoAnoMes": "Фильтры: Документ, Год, Месяц",
     "documento": "Документ",
     "sel": "Выб.",
-    "descargaIniciadaN": "Загрузка начата ({{n}} док.). Демо.",
-    "descargaIniciadaDoc": "{{tipo}} {{mes}} {{ano}}: загрузка начата (демо).",
-    "emailEnviadoOk": "Письмо отправлено (демо).",
+    "descargaIniciadaN": "Загрузка начата ({{n}} док.).",
+    "descargaIniciadaDoc": "{{tipo}} {{mes}} {{ano}}: загрузка начата.",
+    "emailEnviadoOk": "Письмо отправлено.",
     "ningunDocumento": "Нет документов",
     "asuntoDocumentos": "Документы {{nombre}}"
   },
   "facturacion": {
     "pageTitle": "Счета",
-    "pageDescription": "Модуль счётов (демо)",
-    "dragText": "Перетащите счета сюда (PNG, JPG, PDF). Демо.",
+    "pageDescription": "Модуль счётов",
+    "dragText": "Перетащите счета сюда (PNG, JPG, PDF).",
     "zonaDrop": "Зона загрузки",
     "nuevoProveedor": "+ Новый поставщик",
     "nuevoCliente": "+ Новый клиент",
@@ -114,13 +114,13 @@
     "fecha": "Дата",
     "numeroFactura": "№ счёта",
     "proveedorCliente": "Поставщик/Клиент",
-    "proveedorCreadoOk": "Поставщик создан (демо).",
-    "clienteCreadoOk": "Клиент создан (демо)."
+    "proveedorCreadoOk": "Поставщик создан.",
+    "clienteCreadoOk": "Клиент создан."
   },
   "contabilidad": {
     "pageTitle": "Учёт",
-    "pageDescription": "Учётный модуль (демо)",
-    "nuevaOperacion": "Новая операция (демо)",
+    "pageDescription": "Учётный модуль",
+    "nuevaOperacion": "Новая операция",
     "fecha": "Дата",
     "tipoOperacion": "Тип операции",
     "elegir": "Выбрать",
@@ -135,14 +135,14 @@
     "conIva": "С НДС",
     "crearAsiento": "Создать проводку",
     "libroContable": "Книга учёта",
-    "filtrosPeriodo": "Фильтры по периоду, счетам (демо)",
+    "filtrosPeriodo": "Фильтры по периоду, счетам",
     "desde": "С",
     "hasta": "По",
     "tipo": "Тип",
     "numeroAsiento": "№ проводки",
     "numeroFactura": "№ счёта",
-    "asientoCreadoOk": "Проводка создана (демо).",
-    "proveedorCreadoOk": "Поставщик/Клиент создан (демо). Добавлен в список."
+    "asientoCreadoOk": "Проводка создана.",
+    "proveedorCreadoOk": "Поставщик/Клиент создан. Добавлен в список."
   },
   "modals": {
     "enviarPorEmail": "Отправить по email",
@@ -169,7 +169,7 @@
     "pageDescription": "Трудовые документы и ведомости",
     "title": "Трудовые документы",
     "cardTitle": "Документы",
-    "cardSubtitle": "Фильтры и действия (демо)",
+    "cardSubtitle": "Фильтры и действия",
     "download": "Скачать",
     "sendEmail": "Отправить по email",
     "tipoDocumento": "Тип документа",
@@ -185,9 +185,9 @@
     "trabajador": "Сотрудник",
     "importe": "Сумма",
     "rowsPerPage": "Строк на странице",
-    "descargaIniciada": "Загрузка начата ({{n}} док.). Демо.",
-    "emailEnviadoOk": "Письмо отправлено (демо).",
-    "descargaFila": "{{tipo}} - {{trabajador}}: загрузка начата (демо)."
+    "descargaIniciada": "Загрузка начата ({{n}} док.).",
+    "emailEnviadoOk": "Письмо отправлено.",
+    "descargaFila": "{{tipo}} - {{trabajador}}: загрузка начата."
   },
   "widgets": {
     "ingresosVsGastos": "Доходы и расходы",

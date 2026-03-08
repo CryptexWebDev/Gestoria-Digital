@@ -135,7 +135,16 @@ export default function TrabajadorProfilePage() {
             <Box>
             <Stack direction="row" flexWrap="wrap" gap={2} mb={2}>
               <FormControl size="small" sx={{ minWidth: 120 }}>
-                <Select value={tipoFilter} onChange={(e) => { setTipoFilter(e.target.value); setPage(0) }} sx={{ minHeight: 40 }}>
+                <Select
+                  value={tipoFilter}
+                  onChange={(e) => { setTipoFilter(e.target.value); setPage(0) }}
+                  displayEmpty
+                  renderValue={(v) => {
+                    if (v === "") return t("common.todos")
+                    return v === "nomina" ? t("documentosLaborales.nomina") : v === "contrato" ? t("documentosLaborales.contrato") : t("documentosLaborales.finiquito")
+                  }}
+                  sx={{ minHeight: 40 }}
+                >
                   <MenuItem value="">{t("common.todos")}</MenuItem>
                   <MenuItem value="nomina">{t("documentosLaborales.nomina")}</MenuItem>
                   <MenuItem value="contrato">{t("documentosLaborales.contrato")}</MenuItem>
@@ -143,14 +152,26 @@ export default function TrabajadorProfilePage() {
                 </Select>
               </FormControl>
               <FormControl size="small" sx={{ minWidth: 90 }}>
-                <Select value={anoFilter} onChange={(e) => { setAnoFilter(e.target.value); setPage(0) }} sx={{ minHeight: 40 }}>
+                <Select
+                  value={anoFilter}
+                  onChange={(e) => { setAnoFilter(e.target.value); setPage(0) }}
+                  displayEmpty
+                  renderValue={(v) => (v === "" ? t("common.todos") : v)}
+                  sx={{ minHeight: 40 }}
+                >
                   <MenuItem value="">{t("common.todos")}</MenuItem>
                   <MenuItem value="2023">2023</MenuItem>
                   <MenuItem value="2024">2024</MenuItem>
                 </Select>
               </FormControl>
               <FormControl size="small" sx={{ minWidth: 90 }}>
-                <Select value={mesFilter} onChange={(e) => { setMesFilter(e.target.value); setPage(0) }} sx={{ minHeight: 40 }}>
+                <Select
+                  value={mesFilter}
+                  onChange={(e) => { setMesFilter(e.target.value); setPage(0) }}
+                  displayEmpty
+                  renderValue={(v) => (v === "" ? t("common.todos") : (MONTHS[Number(v) - 1] ?? v))}
+                  sx={{ minHeight: 40 }}
+                >
                   <MenuItem value="">{t("common.todos")}</MenuItem>
                   {MONTHS.map((label, i) => (
                     <MenuItem key={label} value={String(i + 1)}>{label}</MenuItem>

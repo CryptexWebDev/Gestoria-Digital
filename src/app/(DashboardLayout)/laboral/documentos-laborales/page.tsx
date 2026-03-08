@@ -132,6 +132,11 @@ export default function DocumentosLaboralesPage() {
             <Select
               value={tipoDoc}
               onChange={(e) => { setTipoDoc(e.target.value); setPage(0) }}
+              displayEmpty
+              renderValue={(v) => {
+                if (v === "") return t("documentosLaborales.todos")
+                return v === "nomina" ? t("documentosLaborales.nomina") : v === "contrato" ? t("documentosLaborales.contrato") : t("documentosLaborales.finiquito")
+              }}
               sx={{ minHeight: 40 }}
             >
               <MenuItem value="">{t("documentosLaborales.todos")}</MenuItem>
@@ -144,6 +149,8 @@ export default function DocumentosLaboralesPage() {
             <Select
               value={ano}
               onChange={(e) => { setAno(e.target.value); setPage(0) }}
+              displayEmpty
+              renderValue={(v) => (v === "" ? t("documentosLaborales.todos") : v)}
               sx={{ minHeight: 40 }}
             >
               <MenuItem value="">{t("documentosLaborales.todos")}</MenuItem>
@@ -155,6 +162,8 @@ export default function DocumentosLaboralesPage() {
             <Select
               value={mes}
               onChange={(e) => { setMes(e.target.value); setPage(0) }}
+              displayEmpty
+              renderValue={(v) => (v === "" ? t("documentosLaborales.todos") : (MONTHS[Number(v) - 1] ?? v))}
               sx={{ minHeight: 40 }}
             >
               <MenuItem value="">{t("documentosLaborales.todos")}</MenuItem>
