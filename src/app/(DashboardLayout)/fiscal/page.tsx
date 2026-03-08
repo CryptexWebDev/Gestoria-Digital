@@ -1,5 +1,7 @@
 "use client"
 
+import React from "react"
+import { useSearchParams } from "next/navigation"
 import Button from "@mui/material/Button"
 import Checkbox from "@mui/material/Checkbox"
 import FormControl from "@mui/material/FormControl"
@@ -32,7 +34,13 @@ const fiscalDemoRows = [
   { id: "6", documento: "IVA", modelo: "303", periodo: "2T", ano: 2024, importe: 3100 },
 ]
 
+const currentYear = new Date().getFullYear()
+
 export default function FiscalPage() {
+  const searchParams = useSearchParams()
+  const anoParam = searchParams.get("ano")
+  const defaultYear = anoParam && /^\d{4}$/.test(anoParam) ? anoParam : String(currentYear)
+
   return (
     <PageContainer title="Fiscal" description="Declaraciones fiscales">
       <Breadcrumb title="Fiscal" items={BCrumb} />
@@ -49,9 +57,9 @@ export default function FiscalPage() {
         <Stack direction="row" flexWrap="wrap" gap={2} mb={3}>
           <FormControl size="small" sx={{ minWidth: 100 }}>
             <InputLabel>Año</InputLabel>
-            <Select label="Año" defaultValue="2024">
-              <MenuItem value="2023">2023</MenuItem>
-              <MenuItem value="2024">2024</MenuItem>
+            <Select label="Año" defaultValue={defaultYear}>
+              <MenuItem value={String(currentYear)}>{currentYear}</MenuItem>
+              <MenuItem value={String(currentYear - 1)}>{currentYear - 1}</MenuItem>
             </Select>
           </FormControl>
           <FormControl size="small" sx={{ minWidth: 120 }}>

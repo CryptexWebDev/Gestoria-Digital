@@ -2,10 +2,12 @@
 
 import Box from "@mui/material/Box"
 import FormControl from "@mui/material/FormControl"
+import FormControlLabel from "@mui/material/FormControlLabel"
 import InputLabel from "@mui/material/InputLabel"
 import MenuItem from "@mui/material/MenuItem"
 import Select from "@mui/material/Select"
 import Stack from "@mui/material/Stack"
+import Switch from "@mui/material/Switch"
 import { useTheme } from "@mui/material/styles"
 import dynamic from "next/dynamic"
 import React from "react"
@@ -24,9 +26,12 @@ interface IngresosVsGastosWidgetProps {
 export default function IngresosVsGastosWidget({ cardSx, contentSx }: IngresosVsGastosWidgetProps = {}) {
   const theme = useTheme()
   const [year, setYear] = React.useState(String(currentYear))
+  const [compareLastYear, setCompareLastYear] = React.useState(false)
 
   const primary = theme.palette.primary.main
   const error = theme.palette.error.main
+  const success = theme.palette.success.main
+  const warning = theme.palette.warning.main
 
   const options: ApexCharts.ApexOptions = {
     chart: {
@@ -36,7 +41,7 @@ export default function IngresosVsGastosWidget({ cardSx, contentSx }: IngresosVs
       toolbar: { show: false },
       height: 280,
     },
-    colors: [primary, error],
+    colors: compareLastYear ? [primary, error, success, warning] : [primary, error],
     plotOptions: {
       bar: {
         horizontal: false,
@@ -60,8 +65,9 @@ export default function IngresosVsGastosWidget({ cardSx, contentSx }: IngresosVs
       axisTicks: { show: false },
     },
     yaxis: {
+      title: { text: "€" },
       labels: {
-        formatter: (val: number) => (val >= 1000 ? `${(val / 1000).toFixed(0)}K` : String(val)),
+        formatter: (val: number) => (val >= 1000 ? `€${(val / 1000).toFixed(0)}K` : `€${val}`),
       },
     },
     tooltip: {
@@ -75,6 +81,12 @@ export default function IngresosVsGastosWidget({ cardSx, contentSx }: IngresosVs
   const series = [
     { name: "Ingresos", data: ingresosGastosDemo.ingresos },
     { name: "Gastos", data: ingresosGastosDemo.gastos },
+    ...(compareLastYear
+      ? [
+          { name: "Ingresos (año ant.)", data: ingresosGastosDemo.ingresosLastYear },
+          { name: "Gastos (año ant.)", data: ingresosGastosDemo.gastosLastYear },
+        ]
+      : []),
   ]
 
   return (
@@ -84,7 +96,7 @@ export default function IngresosVsGastosWidget({ cardSx, contentSx }: IngresosVs
       sx={cardSx}
       contentSx={contentSx}
       action={
-        <Stack direction="row" spacing={1} alignItems="center">
+        <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap">
           <FormControl size="small" sx={{ minWidth: 90 }}>
             <InputLabel>Año</InputLabel>
             <Select
@@ -96,6 +108,16 @@ export default function IngresosVsGastosWidget({ cardSx, contentSx }: IngresosVs
               <MenuItem value={String(currentYear - 1)}>{currentYear - 1}</MenuItem>
             </Select>
           </FormControl>
+          <FormControlLabel
+            control={
+              <Switch
+                size="small"
+                checked={compareLastYear}
+                onChange={(e) => setCompareLastYear(e.target.checked)}
+              />
+            }
+            label="Comparar con año anterior"
+          />
         </Stack>
       }
     >

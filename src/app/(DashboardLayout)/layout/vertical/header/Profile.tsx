@@ -13,25 +13,11 @@ import { Stack } from "@mui/system";
 
 const profile = [
   {
-    href: "/apps/user-profile/profile",
-    title: "My Profile",
-    subtitle: "Account Settings",
-    icon: <Icon icon="solar:wallet-2-line-duotone" width="20" height="20" />,
+    href: "/theme-pages/account-settings",
+    title: "Cambiar contraseña",
+    subtitle: "Ajustes de cuenta",
+    icon: <Icon icon="solar:lock-keyhole-line-duotone" width="20" height="20" />,
     color: "primary",
-  },
-  {
-    href: "/apps/email",
-    title: "My Inbox",
-    subtitle: "Messages & Emails",
-    icon: <Icon icon="solar:shield-minimalistic-line-duotone" width="20" height="20" />,
-    color: "success",
-  },
-  {
-    href: "/apps/notes",
-    title: "My Tasks",
-    subtitle: "To-do and Daily Tasks",
-    icon: <Icon icon="solar:card-2-line-duotone" width="20" height="20" />,
-    color: "error",
   },
 ];
 
@@ -74,8 +60,8 @@ const Profile = () => {
         />
         
         {lgUp ? <Box textAlign="left">
-          <Typography variant="h6" color="textPrimary" display="flex" alignItems="center"> Mike Nielsen</Typography>
-          <Typography variant="subtitle2" color="textSecondary"> Admin</Typography>
+          <Typography variant="h6" color="textPrimary" display="flex" alignItems="center">Usuario</Typography>
+          <Typography variant="subtitle2" color="textSecondary">Cliente</Typography>
         </Box> : ""}
       </Button>
       {/* ------------------------------------------- */}
@@ -96,7 +82,7 @@ const Profile = () => {
           },
         }}
       >
-        <Typography variant="h5">User Profile</Typography>
+        <Typography variant="h5">Perfil</Typography>
         <Stack direction="row" py={3} spacing={2} alignItems="center">
           <Avatar
             src={"/images/profile/user1.jpg"}
@@ -105,10 +91,10 @@ const Profile = () => {
           />
           <Box>
             <Typography variant="h6" color="textPrimary" fontWeight={600}>
-            Mike Nielsen
+              Usuario
             </Typography>
             <Typography variant="subtitle2" color="textSecondary">
-            Admin
+              Cliente
             </Typography>
             <Typography
               variant="subtitle2"
@@ -118,7 +104,7 @@ const Profile = () => {
               gap={1}
             >
               <Icon icon="solar:letter-line-duotone" width="15" height="15" />
-              info@spike.com
+              contacto@ejemplo.es
             </Typography>
           </Box>
         </Stack>
@@ -177,7 +163,7 @@ const Profile = () => {
             component={Link}
             fullWidth
           >
-            Log out
+            Cerrar sesión
           </Button>
         </Box>
       </Menu>

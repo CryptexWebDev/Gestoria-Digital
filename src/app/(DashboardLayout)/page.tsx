@@ -133,7 +133,7 @@ export default function InicioPage() {
               title="Últimas declaraciones de impuestos"
               subtitle="Acceso rápido a Fiscal"
               action={
-                <Button component={Link} href="/fiscal" size="small">
+                <Button component={Link} href={`/fiscal?ano=${year}`} size="small">
                   Ver todas
                 </Button>
               }

@@ -17,10 +17,12 @@ export const companyDemo = {
 
 export const MONTHS = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"] as const
 
-// Ingresos vs Gastos (monthly, €)
+// Ingresos vs Gastos (monthly, €) — current and previous year
 export const ingresosGastosDemo = {
   ingresos: [42, 48, 45, 52, 55, 58, 62, 60, 65, 70, 68, 72],
   gastos: [38, 42, 40, 45, 48, 50, 52, 51, 55, 58, 56, 60],
+  ingresosLastYear: [38, 42, 40, 46, 50, 52, 56, 55, 58, 62, 60, 64],
+  gastosLastYear: [35, 38, 36, 42, 44, 46, 48, 47, 50, 52, 51, 54],
 }
 
 // Estructura gastos (categories, current month)

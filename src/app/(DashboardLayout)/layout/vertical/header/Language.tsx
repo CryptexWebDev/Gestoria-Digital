@@ -13,25 +13,19 @@ import { AppState } from '@/store/store';
 
 const Languages = [
   {
-    flagname: 'English (UK)',
+    flagname: 'Español',
+    icon: "/images/flag/icon-flag-en.svg",
+    value: 'es',
+  },
+  {
+    flagname: 'English',
     icon: "/images/flag/icon-flag-en.svg",
     value: 'en',
   },
   {
-    flagname: '中国人 (Chinese)',
-    icon: "/images/flag/icon-flag-cn.svg",
-    value: 'ch',
-  },
-  {
-    flagname: 'français (French)',
-    icon: "/images/flag/icon-flag-fr.svg",
-    value: 'fr',
-  },
-
-  {
-    flagname: 'عربي (Arabic)',
-    icon: "/images/flag/icon-flag-sa.svg",
-    value: 'ar',
+    flagname: 'Русский',
+    icon: "/images/flag/icon-flag-en.svg",
+    value: 'ru',
   },
 ];
 
@@ -41,7 +35,7 @@ const Language = () => {
   const open = Boolean(anchorEl);
   const customizer = useSelector((state: AppState) => state.customizer);
   const currentLang =
-    Languages.find((_lang) => _lang.value === customizer.isLanguage) || Languages[1];
+    Languages.find((_lang) => _lang.value === customizer.isLanguage) || Languages[0];
   const { i18n } = useTranslation();
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -81,7 +75,10 @@ const Language = () => {
           <MenuItem
             key={index}
             sx={{ py: 2, px: 3 }}
-            onClick={() => dispatch(setLanguage(option.value))}
+            onClick={() => {
+              dispatch(setLanguage(option.value));
+              i18n.changeLanguage(option.value);
+            }}
           >
             <Stack direction="row" spacing={1} alignItems="center">
               <Avatar src={option.icon} alt={option.icon} sx={{ width: 20, height: 20 }} />

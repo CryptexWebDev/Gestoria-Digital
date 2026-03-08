@@ -117,8 +117,8 @@ export default function Sidebar() {
                         sx={{ width: 45, height: 45 }}
                       />
                       <Box ml={2}>
-                        <Typography variant="h5">Mike</Typography>
-                        <Typography variant="subtitle1">Admin</Typography>
+                        <Typography variant="h5">Usuario</Typography>
+                        <Typography variant="subtitle1">Cliente</Typography>
                       </Box>
                     </Box>
                     <IconButton color="primary" href="/auth/auth1/login">

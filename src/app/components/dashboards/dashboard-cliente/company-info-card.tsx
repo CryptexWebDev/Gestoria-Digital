@@ -67,7 +67,7 @@ export default function CompanyInfoCard({
           </Box>
           <Button
             component={Link}
-            href="/datos"
+            href="/datos#contactos"
             variant="outlined"
             size="small"
             startIcon={<IconEdit size={18} />}
