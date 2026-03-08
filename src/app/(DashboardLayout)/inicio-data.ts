@@ -2,12 +2,46 @@
 
 export const companyDemo = {
   denominacion: "Ejemplo S.L.",
+  nombreComercial: "Ejemplo",
   tipo: "Persona Jurídica",
   nif: "B12345678",
-  direccion: "Calle Mayor 1, 28001 Madrid, España",
+  direccion: "Calle Mayor 1",
+  cp: "28001",
+  municipio: "Madrid",
+  provincia: "Madrid",
+  pais: "España",
   telefono: "+34 912 345 678",
   email: "contacto@ejemplo.es",
+  logoUrl: null as string | null,
 }
+
+export const MONTHS = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"] as const
+
+// Ingresos vs Gastos (monthly, €)
+export const ingresosGastosDemo = {
+  ingresos: [42, 48, 45, 52, 55, 58, 62, 60, 65, 70, 68, 72],
+  gastos: [38, 42, 40, 45, 48, 50, 52, 51, 55, 58, 56, 60],
+}
+
+// Estructura gastos (categories, current month)
+export const estructuraGastosDemo = [
+  { label: "Mercaderías / materias primas", value: 28 },
+  { label: "Suministros", value: 12 },
+  { label: "Arrendamientos", value: 18 },
+  { label: "Servicios profesionales", value: 22 },
+  { label: "Publicidad/marketing", value: 8 },
+  { label: "Servicios bancarios", value: 5 },
+  { label: "Otros gastos", value: 7 },
+]
+
+// Coste laboral: current year vs last year (total coste empresa per month)
+export const costeLaboralDemo = {
+  currentYear: [18500, 19200, 18900, 21000, 21500, 22000, 21800, 22500, 23000, 22800, 23200, 23500],
+  lastYear: [17200, 17800, 17500, 19000, 19500, 20000, 19800, 20500, 21000, 20800, 21200, 21500],
+}
+
+// Número de trabajadores per month (optionally: permanentes / nuevos)
+export const numeroTrabajadoresDemo = [3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6]
 
 export const trabajadoresMesDemo = [
   { id: "1", nombre: "Ana García López", nif: "12345678A", neto: 1850, cotizacion: 320, coste: 2170 },
