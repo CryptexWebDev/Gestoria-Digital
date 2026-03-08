@@ -9,11 +9,7 @@ import { useTheme } from "@mui/material/styles";
 import SidebarItems from "./SidebarItems";
 import Logo from "../../shared/logo/Logo";
 import { useSelector, useDispatch } from "@/store/hooks";
-import {
-  hoverSidebar,
-  toggleMobileSidebar,
-} from "@/store/customizer/CustomizerSlice";
-import Scrollbar from "@/app/components/custom-scroll/Scrollbar";
+import { toggleMobileSidebar } from "@/store/customizer/CustomizerSlice";
 import { AppState } from "@/store/store";
 import { Icon } from "@iconify/react";
 
@@ -22,20 +18,9 @@ export default function Sidebar() {
   const customizer = useSelector((state: AppState) => state.customizer);
   const dispatch = useDispatch();
   const theme = useTheme();
-  const toggleWidth =
-    customizer.isCollapse && !customizer.isSidebarHover
-      ? customizer.MiniSidebarWidth
-      : customizer.SidebarWidth;
-
-  const onHoverEnter = () => {
-    if (customizer.isCollapse) {
-      dispatch(hoverSidebar(true));
-    }
-  };
-
-  const onHoverLeave = () => {
-    dispatch(hoverSidebar(false));
-  };
+  const toggleWidth = customizer.isCollapse
+    ? customizer.MiniSidebarWidth
+    : customizer.SidebarWidth;
 
   return (
     <>
@@ -57,8 +42,6 @@ export default function Sidebar() {
           <Drawer
             anchor="left"
             open
-            onMouseEnter={onHoverEnter}
-            onMouseLeave={onHoverLeave}
             variant="permanent"
             PaperProps={{
               sx: {
@@ -83,6 +66,9 @@ export default function Sidebar() {
             <Box
               sx={{
                 height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                overflow: "hidden",
               }}
             >
               {/* ------------------------------------------- */}
@@ -95,22 +81,24 @@ export default function Sidebar() {
                   alignItems: "center",
                   py: 2,
                   px: 2,
+                  flexShrink: 0,
                 }}
               >
                 <Logo />
               </Box>
-              <Scrollbar
+              <Box
                 sx={{
-                  height: customizer.isCollapse
-                    ? "calc(100% - 90px)"
-                    : "calc(100% - 200px)",
+                  flex: 1,
+                  minHeight: 0,
+                  overflowY: "hidden",
+                  overflowX: "hidden",
                 }}
               >
                 {/* ------------------------------------------- */}
                 {/* Sidebar Items */}
                 {/* ------------------------------------------- */}
                 <SidebarItems />
-              </Scrollbar>
+              </Box>
               {customizer.isCollapse ? null : (
                 <Box px={3} py={2} m={3} bgcolor="primary.light">
                   <Stack
