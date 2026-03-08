@@ -6,7 +6,6 @@ import { styled, useTheme } from "@mui/material/styles"
 import React from "react"
 import Header from "./layout/vertical/header/Header"
 import Sidebar from "./layout/vertical/sidebar/Sidebar"
-import Customizer from "./layout/shared/customizer/Customizer"
 import Navigation from "./layout/horizontal/navbar/Navigation"
 import HorizontalHeader from "./layout/horizontal/header/Header"
 import { useSelector } from "@/store/hooks"
@@ -74,7 +73,6 @@ export default function DashboardClientLayout({ children }: Props) {
               {children}
             </Box>
           </Container>
-          <Customizer />
         </PageWrapper>
       </Box>
     </MainWrapper>
