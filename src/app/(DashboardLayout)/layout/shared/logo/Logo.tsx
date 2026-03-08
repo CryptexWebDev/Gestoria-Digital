@@ -14,49 +14,34 @@ export default function Logo() {
     display: "block",
   }));
 
+  const logoWidth = 180
+  const logoHeight = Math.round(logoWidth * (137 / 783))
+
   if (customizer.activeDir === "ltr") {
     return (
       <LinkStyled href="/">
-        {customizer.activeMode === "dark" ? (
-          <Image
-            src="/images/logos/logo-light.svg"
-            alt="logo"
-            height={customizer.TopbarHeight}
-            width={174}
-            priority
-          />
-        ) : (
-          <Image
-            src={"/images/logos/logo-dark.svg"}
-            alt="logo"
-            height={customizer.TopbarHeight}
-            width={174}
-            priority
-          />
-        )}
+        <Image
+          src="/images/logo.svg"
+          alt="logo"
+          height={logoHeight}
+          width={logoWidth}
+          priority
+          style={{ objectFit: "contain" }}
+        />
       </LinkStyled>
-    );
+    )
   }
 
   return (
     <LinkStyled href="/">
-      {customizer.activeMode === "dark" ? (
-        <Image
-          src="/images/logos/logo-light-rtl.svg"
-          alt="logo"
-          height={customizer.TopbarHeight}
-          width={174}
-          priority
-        />
-      ) : (
-        <Image
-          src="/images/logos/logo-dark-rtl.svg"
-          alt="logo"
-          height={customizer.TopbarHeight}
-          width={174}
-          priority
-        />
-      )}
+      <Image
+        src="/images/logo.svg"
+        alt="logo"
+        height={logoHeight}
+        width={logoWidth}
+        priority
+        style={{ objectFit: "contain" }}
+      />
     </LinkStyled>
-  );
+  )
 }

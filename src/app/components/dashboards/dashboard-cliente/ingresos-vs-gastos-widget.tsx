@@ -3,7 +3,6 @@
 import Box from "@mui/material/Box"
 import FormControl from "@mui/material/FormControl"
 import FormControlLabel from "@mui/material/FormControlLabel"
-import InputLabel from "@mui/material/InputLabel"
 import MenuItem from "@mui/material/MenuItem"
 import Select from "@mui/material/Select"
 import Stack from "@mui/material/Stack"
@@ -11,8 +10,9 @@ import Switch from "@mui/material/Switch"
 import { useTheme } from "@mui/material/styles"
 import dynamic from "next/dynamic"
 import React from "react"
+import { useTranslation } from "react-i18next"
 import DashboardCard from "@/app/components/shared/DashboardCard"
-import { MONTHS, ingresosGastosDemo } from "@/app/(DashboardLayout)/inicio-data"
+import { MONTHS, ingresosGastosByYear } from "@/app/(DashboardLayout)/inicio-data"
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
 
@@ -24,8 +24,9 @@ interface IngresosVsGastosWidgetProps {
 }
 
 export default function IngresosVsGastosWidget({ cardSx, contentSx }: IngresosVsGastosWidgetProps = {}) {
+  const { t } = useTranslation()
   const theme = useTheme()
-  const [year, setYear] = React.useState(String(currentYear))
+  const [year, setYear] = React.useState("")
   const [compareLastYear, setCompareLastYear] = React.useState(false)
 
   const primary = theme.palette.primary.main
@@ -78,34 +79,49 @@ export default function IngresosVsGastosWidget({ cardSx, contentSx }: IngresosVs
     },
   }
 
+  const availableYears = Object.keys(ingresosGastosByYear).sort((a, b) => Number(b) - Number(a))
+  const fallbackYear = availableYears[0] ?? String(currentYear)
+  const dataCurrent = year ? (ingresosGastosByYear[year] ?? ingresosGastosByYear[fallbackYear]) : ingresosGastosByYear[fallbackYear]
+  const prevYear = String(Number(year) - 1)
+  const dataPrev = ingresosGastosByYear[prevYear]
+
   const series = [
-    { name: "Ingresos", data: ingresosGastosDemo.ingresos },
-    { name: "Gastos", data: ingresosGastosDemo.gastos },
-    ...(compareLastYear
+    { name: t("widgets.ingresos"), data: dataCurrent.ingresos },
+    { name: t("widgets.gastos"), data: dataCurrent.gastos },
+    ...(compareLastYear && dataPrev
       ? [
-          { name: "Ingresos (año ant.)", data: ingresosGastosDemo.ingresosLastYear },
-          { name: "Gastos (año ant.)", data: ingresosGastosDemo.gastosLastYear },
+          { name: `${t("widgets.ingresos")} (${t("widgets.anoAnterior")})`, data: dataPrev.ingresos },
+          { name: `${t("widgets.gastos")} (${t("widgets.anoAnterior")})`, data: dataPrev.gastos },
         ]
       : []),
   ]
 
   return (
     <DashboardCard
-      title="Ingresos vs Gastos"
-      subtitle="Por mes"
+      title={t("widgets.ingresosVsGastos")}
+      subtitle={t("widgets.porMes")}
       sx={cardSx}
       contentSx={contentSx}
       action={
         <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap">
           <FormControl size="small" sx={{ minWidth: 90 }}>
-            <InputLabel>Año</InputLabel>
             <Select
-              label="Año"
               value={year}
               onChange={(e) => setYear(e.target.value)}
+              displayEmpty
+              renderValue={(v) => (v === "" ? t("common.elegir") : v)}
+              sx={{ minHeight: 40 }}
             >
-              <MenuItem value={String(currentYear)}>{currentYear}</MenuItem>
-              <MenuItem value={String(currentYear - 1)}>{currentYear - 1}</MenuItem>
+              <MenuItem value="">
+                <em>{t("common.elegir")}</em>
+              </MenuItem>
+              {Object.keys(ingresosGastosByYear)
+                .sort((a, b) => Number(b) - Number(a))
+                .map((y) => (
+                  <MenuItem key={y} value={y}>
+                    {y}
+                  </MenuItem>
+                ))}
             </Select>
           </FormControl>
           <FormControlLabel
@@ -116,7 +132,8 @@ export default function IngresosVsGastosWidget({ cardSx, contentSx }: IngresosVs
                 onChange={(e) => setCompareLastYear(e.target.checked)}
               />
             }
-            label="Comparar con año anterior"
+            label={t("widgets.compararAnoAnterior")}
+            sx={{ "& .MuiFormControlLabel-label": { overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", maxWidth: "100%" } }}
           />
         </Stack>
       }

@@ -3,7 +3,6 @@
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import FormControl from "@mui/material/FormControl"
-import InputLabel from "@mui/material/InputLabel"
 import MenuItem from "@mui/material/MenuItem"
 import Select from "@mui/material/Select"
 import Stack from "@mui/material/Stack"
@@ -11,8 +10,9 @@ import { useTheme } from "@mui/material/styles"
 import dynamic from "next/dynamic"
 import Link from "next/link"
 import React from "react"
+import { useTranslation } from "react-i18next"
 import DashboardCard from "@/app/components/shared/DashboardCard"
-import { MONTHS, estructuraGastosDemo } from "@/app/(DashboardLayout)/inicio-data"
+import { MONTHS, estructuraGastosByYearMonth } from "@/app/(DashboardLayout)/inicio-data"
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false })
 
@@ -24,9 +24,17 @@ interface EstructuraGastosWidgetProps {
 }
 
 export default function EstructuraGastosWidget({ cardSx, contentSx }: EstructuraGastosWidgetProps = {}) {
+  const { t } = useTranslation()
   const theme = useTheme()
-  const [year, setYear] = React.useState(String(currentYear))
+  const [year, setYear] = React.useState("")
   const [month, setMonth] = React.useState(String(new Date().getMonth() + 1))
+
+  const availableYears = Object.keys(estructuraGastosByYearMonth).sort((a, b) => Number(b) - Number(a))
+  const defaultYear = availableYears[0] ?? String(currentYear)
+  const yearData = year
+    ? (estructuraGastosByYearMonth[year] ?? estructuraGastosByYearMonth[defaultYear])
+    : estructuraGastosByYearMonth[defaultYear]
+  const monthData = yearData?.[month] ?? yearData?.["1"] ?? []
 
   const options: ApexCharts.ApexOptions = {
     chart: {
@@ -35,7 +43,7 @@ export default function EstructuraGastosWidget({ cardSx, contentSx }: Estructura
       foreColor: "#adb0bb",
       toolbar: { show: false },
     },
-    labels: estructuraGastosDemo.map((d) => d.label),
+    labels: monthData.map((d) => d.label),
     colors: [
       theme.palette.primary.main,
       theme.palette.secondary.main,
@@ -71,19 +79,18 @@ export default function EstructuraGastosWidget({ cardSx, contentSx }: Estructura
     },
   }
 
-  const series = estructuraGastosDemo.map((d) => d.value)
+  const series = monthData.map((d) => d.value)
 
   return (
     <DashboardCard
-      title="Estructura de gastos"
-      subtitle="Por categoría"
+      title={t("widgets.estructuraGastos")}
+      subtitle={t("widgets.porCategoria")}
       sx={cardSx}
       contentSx={contentSx}
       action={
         <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap">
           <FormControl size="small" sx={{ minWidth: 72 }}>
-            <InputLabel>Mes</InputLabel>
-            <Select label="Mes" value={month} onChange={(e) => setMonth(e.target.value)}>
+            <Select value={month} onChange={(e) => setMonth(e.target.value)} sx={{ minHeight: 40 }}>
               {MONTHS.map((m, i) => (
                 <MenuItem key={m} value={String(i + 1)}>
                   {m}
@@ -92,10 +99,23 @@ export default function EstructuraGastosWidget({ cardSx, contentSx }: Estructura
             </Select>
           </FormControl>
           <FormControl size="small" sx={{ minWidth: 80 }}>
-            <InputLabel>Año</InputLabel>
-            <Select label="Año" value={year} onChange={(e) => setYear(e.target.value)}>
-              <MenuItem value={String(currentYear)}>{currentYear}</MenuItem>
-              <MenuItem value={String(currentYear - 1)}>{currentYear - 1}</MenuItem>
+            <Select
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+              displayEmpty
+              renderValue={(v) => (v === "" ? t("common.elegir") : v)}
+              sx={{ minHeight: 40 }}
+            >
+              <MenuItem value="">
+                <em>{t("common.elegir")}</em>
+              </MenuItem>
+              {Object.keys(estructuraGastosByYearMonth)
+                .sort((a, b) => Number(b) - Number(a))
+                .map((y) => (
+                  <MenuItem key={y} value={y}>
+                    {y}
+                  </MenuItem>
+                ))}
             </Select>
           </FormControl>
         </Stack>
@@ -118,7 +138,7 @@ export default function EstructuraGastosWidget({ cardSx, contentSx }: Estructura
           </Box>
         </Box>
         <Button component={Link} href="/contabilidad" size="small" sx={{ mt: 1 }}>
-          Detalles en Contabilidad
+          {t("widgets.detallesContabilidad")}
         </Button>
       </Box>
     </DashboardCard>

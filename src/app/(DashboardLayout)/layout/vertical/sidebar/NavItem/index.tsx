@@ -194,17 +194,13 @@ export default function NavItem({
               <Icon icon={"solar:" + item.icon} width="24" height="24" />
             )}
           </ListItemIcon>
-          <ListItemText>
-            {hideMenu ? "" : <>{t(`${item?.title}`)}</>}
-            <br />
-            {item?.subtitle ? (
-              <Typography variant="caption">
-                {hideMenu ? "" : item?.subtitle}
-              </Typography>
-            ) : (
-              ""
-            )}
-          </ListItemText>
+          <ListItemText
+            primary={hideMenu ? "" : t(`${item?.title}`)}
+            secondary={item?.subtitle && !hideMenu ? item.subtitle : null}
+            primaryTypographyProps={{ noWrap: true, title: t(`${item?.title}`) }}
+            secondaryTypographyProps={{ noWrap: true }}
+            sx={{ minWidth: 0, overflow: "hidden" }}
+          />
 
           {!item?.chip || hideMenu ? null : (
             <Chip

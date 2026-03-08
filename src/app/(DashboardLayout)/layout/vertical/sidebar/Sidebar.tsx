@@ -88,7 +88,15 @@ export default function Sidebar() {
               {/* ------------------------------------------- */}
               {/* Logo */}
               {/* ------------------------------------------- */}
-              <Box px={2}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  py: 2,
+                  px: 2,
+                }}
+              >
                 <Logo />
               </Box>
               <Scrollbar
@@ -151,7 +159,15 @@ export default function Sidebar() {
           {/* ------------------------------------------- */}
           {/* Logo */}
           {/* ------------------------------------------- */}
-          <Box px={2}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              py: 2,
+              px: 2,
+            }}
+          >
             <Logo />
           </Box>
           {/* ------------------------------------------- */}

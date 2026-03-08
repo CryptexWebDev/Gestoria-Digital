@@ -14,17 +14,17 @@ import { AppState } from '@/store/store';
 const Languages = [
   {
     flagname: 'Español',
-    icon: "/images/flag/icon-flag-en.svg",
+    icon: '/images/Spanish.svg',
     value: 'es',
   },
   {
     flagname: 'English',
-    icon: "/images/flag/icon-flag-en.svg",
+    icon: '/images/America.svg',
     value: 'en',
   },
   {
     flagname: 'Русский',
-    icon: "/images/flag/icon-flag-en.svg",
+    icon: '/images/Russia.svg',
     value: 'ru',
   },
 ];

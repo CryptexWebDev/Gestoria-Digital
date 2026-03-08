@@ -343,14 +343,16 @@ const components: any = (theme: Theme) => {
           width: "100%",
           padding: "30px",
           backgroundImage: "none",
-          borderRadius: "18px"
+          borderRadius: "18px",
+          overflow: "visible",
         },
       },
     },
     MuiCardContent: {
       styleOverrides: {
         root: {
-          padding: '30px',
+          padding: "30px",
+          overflow: "visible",
         },
       },
     },

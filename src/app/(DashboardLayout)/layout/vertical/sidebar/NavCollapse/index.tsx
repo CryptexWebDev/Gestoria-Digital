@@ -56,21 +56,18 @@ export default function NavCollapse({
   const theme = useTheme();
   const pathname = usePathname();
   const { t } = useTranslation();
-  const [open, setOpen] = useState(false);
+  const isChildActive = menu?.children?.some((item: any) => item?.href === pathname) ?? false;
+  const [open, setOpen] = useState(isChildActive);
 
   const handleClick = () => {
-    setOpen(!open);
+    setOpen((prev: boolean) => !prev);
   };
 
-  // menu collapse for sub-levels
+  // Keep collapse open when pathname matches a child (single update, no jitter)
   React.useEffect(() => {
-    setOpen(false);
-    menu?.children?.forEach((item: any) => {
-      if (item?.href === pathname) {
-        setOpen(true);
-      }
-    });
-  }, [pathname, menu.children]);
+    const shouldOpen = menu?.children?.some((item: any) => item?.href === pathname) ?? false;
+    setOpen(shouldOpen);
+  }, [pathname, menu?.children]);
 
   const ListItemStyled = styled(ListItemButton)(() => ({
     marginBottom: "2px",
@@ -203,9 +200,12 @@ export default function NavCollapse({
             />
           )}
         </ListItemIcon>
-        <ListItemText color="inherit">
-          {hideMenu ? "" : <>{t(`${menu.title}`)}</>}
-        </ListItemText>
+        <ListItemText
+          primary={hideMenu ? "" : t(`${menu.title}`)}
+          primaryTypographyProps={{ noWrap: true, title: t(`${menu.title}`) }}
+          sx={{ minWidth: 0, overflow: "hidden" }}
+          color="inherit"
+        />
         {!open ? (
           <IconChevronDown size="1rem" />
         ) : (

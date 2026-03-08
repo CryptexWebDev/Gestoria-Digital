@@ -5,6 +5,7 @@ import { useTheme } from "@mui/material/styles"
 import dynamic from "next/dynamic"
 import Link from "next/link"
 import React from "react"
+import { useTranslation } from "react-i18next"
 import Button from "@mui/material/Button"
 import DashboardCard from "@/app/components/shared/DashboardCard"
 import { MONTHS, numeroTrabajadoresDemo } from "@/app/(DashboardLayout)/inicio-data"
@@ -19,6 +20,7 @@ interface NumeroTrabajadoresWidgetProps {
 }
 
 export default function NumeroTrabajadoresWidget({ cardSx, contentSx }: NumeroTrabajadoresWidgetProps = {}) {
+  const { t } = useTranslation()
   const theme = useTheme()
   const primary = theme.palette.primary.main
 
@@ -62,17 +64,17 @@ export default function NumeroTrabajadoresWidget({ cardSx, contentSx }: NumeroTr
     tooltip: {
       theme: theme.palette.mode === "dark" ? "dark" : "light",
       y: {
-        formatter: (val: number) => `${val} trabajador${val !== 1 ? "es" : ""}`,
+        formatter: (val: number) => t("widgets.workersCount", { n: val }),
       },
     },
   }
 
-  const series = [{ name: "Trabajadores", data: numeroTrabajadoresDemo }]
+  const series = [{ name: t("laboral.trabajadoresPageTitle"), data: numeroTrabajadoresDemo }]
 
   return (
     <DashboardCard
-      title="Número de trabajadores"
-      subtitle={`${currentYear} por mes`}
+      title={t("widgets.numeroTrabajadores")}
+      subtitle={t("widgets.porMesAno", { ano: currentYear })}
       sx={cardSx}
       contentSx={contentSx}
     >
@@ -81,7 +83,7 @@ export default function NumeroTrabajadoresWidget({ cardSx, contentSx }: NumeroTr
           <Chart options={options} series={series} type="bar" height={280} width="100%" />
         </Box>
         <Button component={Link} href="/laboral/trabajadores" size="small" sx={{ mt: 1 }}>
-          Ver en Trabajadores
+          {t("widgets.verEnTrabajadores")}
         </Button>
       </Box>
     </DashboardCard>

@@ -6,7 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { styled } from '@mui/material/styles';
 import { useSelector, useDispatch } from "@/store/hooks";
-import { toggleSidebar, toggleMobileSidebar } from "@/store/customizer/CustomizerSlice";
+import { toggleSidebar, toggleMobileSidebar, setDarkMode } from "@/store/customizer/CustomizerSlice";
 import { Icon } from "@iconify/react";
 import Profile from "./Profile";
 import Language from "./Language";
@@ -56,6 +56,18 @@ const Header = () => {
         </Stack>
         <Box flexGrow={1} />
         <Stack spacing={2} direction="row" alignItems="center">
+          <Button
+            color="inherit"
+            aria-label="toggle dark mode"
+            className="btn-rounded-circle-40"
+            onClick={() => dispatch(setDarkMode(customizer.activeMode === "light" ? "dark" : "light"))}
+          >
+            {customizer.activeMode === "light" ? (
+              <Icon icon="solar:moon-line-duotone" width="21" height="21" />
+            ) : (
+              <Icon icon="solar:sun-2-line-duotone" width="21" height="21" />
+            )}
+          </Button>
           <Language />
           <Profile />
         </Stack>

@@ -1,5 +1,7 @@
 "use client"
 
+import { useMemo, useState } from "react"
+import { useTranslation } from "react-i18next"
 import Box from "@mui/material/Box"
 import InputAdornment from "@mui/material/InputAdornment"
 import Stack from "@mui/material/Stack"
@@ -9,6 +11,7 @@ import TableCell from "@mui/material/TableCell"
 import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
+import TablePagination from "@mui/material/TablePagination"
 import TextField from "@mui/material/TextField"
 import Typography from "@mui/material/Typography"
 import Link from "next/link"
@@ -18,23 +21,54 @@ import DashboardCard from "@/app/components/shared/DashboardCard"
 import { trabajadoresListDemo } from "../../inicio-data"
 import { IconSearch } from "@tabler/icons-react"
 
-const BCrumb = [
-  { to: "/", title: "Inicio" },
-  { to: "/laboral/documentos-laborales", title: "Laboral" },
-  { title: "Trabajadores" },
-]
 
+const ROWS_PER_PAGE_OPTIONS = [5, 10, 25]
 
 export default function TrabajadoresPage() {
+  const { t } = useTranslation()
+  const [search, setSearch] = useState("")
+  const [page, setPage] = useState(0)
+  const [rowsPerPage, setRowsPerPage] = useState(10)
+
+  const BCrumb = [
+    { to: "/", title: t("Inicio") },
+    { to: "/laboral/documentos-laborales", title: t("Laboral") },
+    { title: t("Trabajadores") },
+  ]
+
+  const filteredRows = useMemo(() => {
+    if (!search.trim()) return trabajadoresListDemo
+    const q = search.trim().toLowerCase()
+    return trabajadoresListDemo.filter(
+      (row) =>
+        row.nombre.toLowerCase().includes(q) ||
+        row.nif.toLowerCase().includes(q) ||
+        row.email.toLowerCase().includes(q)
+    )
+  }, [search])
+
+  const paginatedRows = useMemo(() => {
+    const start = page * rowsPerPage
+    return filteredRows.slice(start, start + rowsPerPage)
+  }, [filteredRows, page, rowsPerPage])
+
+  const handleChangePage = (_: unknown, newPage: number) => setPage(newPage)
+  const handleChangeRowsPerPage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setRowsPerPage(parseInt(e.target.value, 10))
+    setPage(0)
+  }
+
   return (
-    <PageContainer title="Trabajadores" description="Listado de trabajadores">
-      <Breadcrumb title="Trabajadores" items={BCrumb} />
-      <DashboardCard title="Trabajadores" subtitle="Clic en fila para ver perfil">
+    <PageContainer title={t("laboral.trabajadoresPageTitle")} description={t("laboral.trabajadoresDescription")}>
+      <Breadcrumb title={t("Trabajadores")} items={BCrumb} />
+      <DashboardCard title={t("laboral.trabajadoresPageTitle")} subtitle={t("laboral.clicVerPerfil")}>
         <Box>
-        <Box mb={2}>
+        <Box mb={2} display="flex" flexWrap="wrap" gap={2} alignItems="center">
           <TextField
             size="small"
-            placeholder="Buscar por nombre o apellido"
+            placeholder={t("laboral.buscarPlaceholder")}
+            value={search}
+            onChange={(e) => { setSearch(e.target.value); setPage(0) }}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -42,22 +76,22 @@ export default function TrabajadoresPage() {
                 </InputAdornment>
               ),
             }}
-            sx={{ maxWidth: 320 }}
+            sx={{ minWidth: 280 }}
           />
         </Box>
         <TableContainer>
           <Table size="small" sx={{ whiteSpace: "nowrap" }}>
             <TableHead>
               <TableRow>
-                <TableCell><Typography variant="subtitle2" fontWeight={600}>Nombre</Typography></TableCell>
-                <TableCell><Typography variant="subtitle2" fontWeight={600}>NIF</Typography></TableCell>
-                <TableCell><Typography variant="subtitle2" fontWeight={600}>Nº SS</Typography></TableCell>
-                <TableCell><Typography variant="subtitle2" fontWeight={600}>Teléfono</Typography></TableCell>
-                <TableCell><Typography variant="subtitle2" fontWeight={600}>Email</Typography></TableCell>
+                <TableCell><Typography variant="subtitle2" fontWeight={600}>{t("laboral.nombre")}</Typography></TableCell>
+                <TableCell><Typography variant="subtitle2" fontWeight={600}>{t("laboral.nif")}</Typography></TableCell>
+                <TableCell><Typography variant="subtitle2" fontWeight={600}>{t("laboral.numeroSS")}</Typography></TableCell>
+                <TableCell><Typography variant="subtitle2" fontWeight={600}>{t("laboral.telefono")}</Typography></TableCell>
+                <TableCell><Typography variant="subtitle2" fontWeight={600}>{t("modals.email")}</Typography></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {trabajadoresListDemo.map((row) => (
+              {paginatedRows.map((row) => (
                 <TableRow
                   key={row.id}
                   component={Link}
@@ -78,6 +112,17 @@ export default function TrabajadoresPage() {
             </TableBody>
           </Table>
         </TableContainer>
+        <TablePagination
+          component="div"
+          count={filteredRows.length}
+          page={page}
+          onPageChange={handleChangePage}
+          rowsPerPage={rowsPerPage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+          rowsPerPageOptions={ROWS_PER_PAGE_OPTIONS}
+          labelRowsPerPage={t("common.filasPorPagina")}
+          labelDisplayedRows={({ from, to, count }) => t("common.paginatedCount", { from, to, count })}
+        />
         </Box>
       </DashboardCard>
     </PageContainer>

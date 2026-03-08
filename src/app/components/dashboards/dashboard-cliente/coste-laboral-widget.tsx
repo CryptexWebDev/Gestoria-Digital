@@ -8,6 +8,7 @@ import { useTheme } from "@mui/material/styles"
 import dynamic from "next/dynamic"
 import Link from "next/link"
 import React from "react"
+import { useTranslation } from "react-i18next"
 import Button from "@mui/material/Button"
 import DashboardCard from "@/app/components/shared/DashboardCard"
 import { MONTHS, costeLaboralDemo } from "@/app/(DashboardLayout)/inicio-data"
@@ -22,6 +23,7 @@ interface CosteLaboralWidgetProps {
 }
 
 export default function CosteLaboralWidget({ cardSx, contentSx }: CosteLaboralWidgetProps = {}) {
+  const { t } = useTranslation()
   const theme = useTheme()
   const [showLastYear, setShowLastYear] = React.useState(true)
 
@@ -71,8 +73,8 @@ export default function CosteLaboralWidget({ cardSx, contentSx }: CosteLaboralWi
 
   return (
     <DashboardCard
-      title="Coste laboral"
-      subtitle="Coste total empresa: año actual vs anterior"
+      title={t("widgets.costeLaboral")}
+      subtitle={t("widgets.costeTotalSubtitle")}
       sx={cardSx}
       contentSx={contentSx}
       action={
@@ -85,7 +87,8 @@ export default function CosteLaboralWidget({ cardSx, contentSx }: CosteLaboralWi
                 onChange={(e) => setShowLastYear(e.target.checked)}
               />
             }
-            label="Comparar con año anterior"
+            label={t("widgets.compararAnoAnterior")}
+            sx={{ "& .MuiFormControlLabel-label": { overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", maxWidth: "100%" } }}
           />
         </Stack>
       }
@@ -95,7 +98,7 @@ export default function CosteLaboralWidget({ cardSx, contentSx }: CosteLaboralWi
           <Chart options={options} series={series} type="line" height={280} width="100%" />
         </Box>
         <Button component={Link} href="/laboral/documentos-laborales" size="small" sx={{ mt: 1 }}>
-          Ver en Laboral
+          {t("widgets.verEnLaboral")}
         </Button>
       </Box>
     </DashboardCard>

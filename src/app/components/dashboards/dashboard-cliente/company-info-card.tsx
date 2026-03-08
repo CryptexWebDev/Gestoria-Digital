@@ -7,6 +7,7 @@ import CardContent from "@mui/material/CardContent"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import Link from "next/link"
+import { useTranslation } from "react-i18next"
 import BlankCard from "@/app/components/shared/BlankCard"
 import { IconEdit } from "@tabler/icons-react"
 
@@ -38,6 +39,7 @@ export default function CompanyInfoCard({
   email,
   logoUrl,
 }: CompanyInfoCardProps) {
+  const { t } = useTranslation()
   const fullAddress = [direccion, cp, municipio, provincia, pais].filter(Boolean).join(", ")
 
   return (
@@ -56,7 +58,7 @@ export default function CompanyInfoCard({
               {denominacion}
             </Typography>
             <Typography variant="body2" color="textSecondary">
-              {tipo} · NIF/CIF: {nif}
+              {tipo} · {t("datos.nifCif")}: {nif}
             </Typography>
             <Typography variant="body2" color="textSecondary" mt={1}>
               {fullAddress}
@@ -72,7 +74,7 @@ export default function CompanyInfoCard({
             size="small"
             startIcon={<IconEdit size={18} />}
           >
-            Editar contactos
+            {t("company.editarContactos")}
           </Button>
         </Stack>
       </CardContent>

@@ -67,15 +67,20 @@ const DashboardCard = ({
               alignItems={'center'}
               mb={3}
             >
-              <Box>
-                {title ? <Typography variant="h5">{title}</Typography> : ''}
-
+              <Box sx={{ minWidth: 0 }}>
+                {title ? (
+                  <Typography variant="h5" noWrap title={title} sx={{ overflow: "hidden", textOverflow: "ellipsis" }}>
+                    {title}
+                  </Typography>
+                ) : (
+                  ""
+                )}
                 {subtitle ? (
-                  <Typography variant="subtitle2" color="textSecondary">
+                  <Typography variant="subtitle2" color="textSecondary" noWrap title={subtitle} sx={{ overflow: "hidden", textOverflow: "ellipsis" }}>
                     {subtitle}
                   </Typography>
                 ) : (
-                  ''
+                  ""
                 )}
               </Box>
               {action}
