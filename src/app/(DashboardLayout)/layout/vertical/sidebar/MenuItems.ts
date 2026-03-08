@@ -75,17 +75,6 @@ const Menuitems: MenuitemsType[] = [
     href: "/contabilidad",
     bgcolor: "info",
   },
-  {
-    navlabel: true,
-    subheader: "Cuenta",
-  },
-  {
-    id: uniqueId(),
-    title: "Ajustes",
-    icon: "settings-minimalistic-line-duotone",
-    href: "/theme-pages/account-settings",
-    bgcolor: "secondary",
-  },
 ];
 
 export default Menuitems;

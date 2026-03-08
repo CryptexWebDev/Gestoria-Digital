@@ -140,7 +140,7 @@ const Notifications = () => {
         </Scrollbar>
         <Box p={3} pb={1}>
           <Button
-            href="/apps/email"
+            href="/"
             variant="outlined"
             component={Link}
             color="primary"

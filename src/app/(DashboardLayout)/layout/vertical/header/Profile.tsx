@@ -13,9 +13,9 @@ import { Stack } from "@mui/system";
 
 const profile = [
   {
-    href: "/theme-pages/account-settings",
+    href: "/datos",
     title: "Cambiar contraseña",
-    subtitle: "Ajustes de cuenta",
+    subtitle: "Datos y contacto",
     icon: <Icon icon="solar:lock-keyhole-line-duotone" width="20" height="20" />,
     color: "primary",
   },

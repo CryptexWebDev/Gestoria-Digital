@@ -107,7 +107,7 @@ const CartItems = () => {
           </Typography>
           <Button
             component={Link}
-            href="/apps/ecommerce/shop"
+            href="/facturacion"
             variant="contained"
           >
             Go back to Shopping

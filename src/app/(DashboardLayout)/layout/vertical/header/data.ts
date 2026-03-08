@@ -103,51 +103,39 @@ interface appsLinkType {
 
 const appsLink: appsLinkType[] = [
   {
-    href: "/apps/chats",
-    title: "Chat Application",
-    subtext: "New messages arrived",
+    href: "/",
+    title: "Inicio",
+    subtext: "Panel principal",
     avatar: "/images/svgs/icon-dd-chat.svg",
   },
   {
-    href: "/apps/ecommerce/shop",
-    title: "eCommerce App",
-    subtext: "New stock available",
+    href: "/facturacion",
+    title: "Facturación",
+    subtext: "Facturas y documentos",
     avatar: "/images/svgs/icon-dd-cart.svg",
   },
   {
-    href: "/apps/notes",
-    title: "Notes App",
-    subtext: "To-do and Daily tasks",
+    href: "/contabilidad",
+    title: "Contabilidad",
+    subtext: "Asientos y libro diario",
     avatar: "/images/svgs/icon-dd-invoice.svg",
   },
   {
-    href: "/apps/calendar",
-    title: "Calendar App",
-    subtext: "Get dates",
+    href: "/fiscal",
+    title: "Fiscal",
+    subtext: "Declaraciones",
     avatar: "/images/svgs/icon-dd-date.svg",
   },
   {
-    href: "/apps/contacts",
-    title: "Contact Application",
-    subtext: "2 Unsaved Contacts",
+    href: "/laboral/trabajadores",
+    title: "Trabajadores",
+    subtext: "Equipo laboral",
     avatar: "/images/svgs/icon-dd-mobile.svg",
   },
   {
-    href: "/apps/tickets",
-    title: "Tickets App",
-    subtext: "Submit tickets",
-    avatar: "/images/svgs/icon-dd-lifebuoy.svg",
-  },
-  {
-    href: "/apps/email",
-    title: "Email App",
-    subtext: "Get new emails",
-    avatar: "/images/svgs/icon-dd-message-box.svg",
-  },
-  {
-    href: "/apps/blog/post",
-    title: "Blog App",
-    subtext: "added new blog",
+    href: "/datos",
+    title: "Datos",
+    subtext: "Datos de la empresa",
     avatar: "/images/svgs/icon-dd-application.svg",
   },
 ];
@@ -159,36 +147,24 @@ interface LinkType {
 
 const pageLinks: LinkType[] = [
   {
-    href: "/theme-pages/pricing",
-    title: "Pricing Page",
+    href: "/",
+    title: "Inicio",
   },
   {
     href: "/auth/auth1/login",
-    title: "Authentication Design",
-  },
-  {
-    href: "/auth/auth1/register",
-    title: "Register Now",
+    title: "Iniciar sesión",
   },
   {
     href: "/404",
-    title: "404 Error Page",
+    title: "Página no encontrada",
   },
   {
-    href: "/apps/note",
-    title: "Notes App",
+    href: "/datos",
+    title: "Datos",
   },
   {
-    href: "/apps/user-profile/profile",
-    title: "User Application",
-  },
-  {
-    href: "/apps/blog/post",
-    title: "Blog Design",
-  },
-  {
-    href: "/apps/ecommerce/checkout",
-    title: "Shopping Cart",
+    href: "/facturacion",
+    title: "Facturación",
   },
 ];
 

@@ -55,12 +55,5 @@ const Menuitems = [
     href: "/contabilidad",
     bgcolor: "info",
   },
-  {
-    id: uniqueId(),
-    title: 'Ajustes',
-    icon: 'settings-minimalistic-line-duotone',
-    href: '/theme-pages/account-settings',
-    bgcolor: "secondary",
-  },
 ];
 export default Menuitems;

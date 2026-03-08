@@ -5,10 +5,19 @@ import "./global.css";
 import NextTopLoader from 'nextjs-toploader';
 
 
+import { SITE_NAME, DEFAULT_DESCRIPTION } from "@/lib/seo"
+
 export const metadata = {
-  title: "Spike Main Demo",
-  description: "Spike Main kit",
-};
+  title: {
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: DEFAULT_DESCRIPTION,
+  openGraph: {
+    title: SITE_NAME,
+    description: DEFAULT_DESCRIPTION,
+  },
+}
 
 export default function RootLayout({
   children,
